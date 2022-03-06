@@ -139,15 +139,15 @@ class GameBoard:
     
 a = GameBoard(6);
 
-print(a.get_possible_moves([9,3]))
+# print(a.get_possible_moves([9,3]))
 
-print(a._board[12, 0]) #flip coordinates
+# print(a._board[12, 0]) #flip coordinates
 
-print(a.player1[0])
+# print(a.player1[0])
 
-print(a.goalList[0])
+# print(a.goalList[0])
 
-print(a.player1[0], a.goalList[0])
+# print(a.player1[0], a.goalList[0])
 
-print(a.findCost(a.player1[0], a.goalList[0]))
+# print(a.findCost(a.player1[0], a.goalList[0]))
     
