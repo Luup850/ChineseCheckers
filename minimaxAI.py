@@ -33,6 +33,7 @@ class AI:
             
     
 a = board.GameBoard(6)
-player = AI(0)
+player = AI(1)
  
-test = player.findOptimalMove(a)
+c, b = player.findOptimalMove(a)
+print(c)
