@@ -34,7 +34,7 @@ class GameBoard:
 
         #Put players on the board
         for i in range(1, players + 1):
-            for y,x in self.playerlist[i-1]:
+            for x,y in self.playerlist[i-1]:
                 self._board[x,y] = i
                 
        
