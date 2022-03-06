@@ -1,7 +1,8 @@
 from re import X
 import numpy as np
+import math
 class GameBoard:
-    _board = np.zeros((24, 16))
+    _board = np.zeros((25, 17))
     _goalpos = []
     # Taken from https://github.com/AndreaVidali/ChineseChekersAI/blob/master/engine_2.py which is why x and y is flipped
     player1 = [[0, 12], [1, 11], [1, 13], [2, 10], [2, 12], [2, 14], [3, 9], [3, 11], [3, 13], [3, 15]]
@@ -10,7 +11,10 @@ class GameBoard:
     player4 = [[13, 9], [13, 11], [13, 13], [13, 15], [14, 10], [14, 12], [14, 14], [15, 11], [15, 13], [16, 12]]
     player5 = [[9, 3], [10, 2], [10, 4], [11, 1], [11, 3], [11, 5], [12, 0], [12, 2], [12, 4], [12, 6]]
     player6 = [[4, 0], [4, 2], [4, 4], [4, 6], [5, 1], [5, 3], [5, 5], [6, 2], [6, 4], [7, 3]]
+    
+    
     playerlist = [player1, player2, player3, player4, player5, player6]
+    goalList = [[16, 12],[12, 0] ,[4, 0] ,[0, 12], [4, 24], [12, 24]]
     #Takes a tuple of 6, indicating players
     def __init__(self, players):
         #Invalid positions to move to
@@ -26,8 +30,10 @@ class GameBoard:
 
         #Put players on the board
         for i in range(1, players + 1):
-            for y,x in self.playerlist[i]:
+            for y,x in self.playerlist[i-1]:
                 self._board[x,y] = i
+                
+       
         
         #playerhomes = self.player1 + self.player2 + self.player3 + self.player4 + self.player5 + self.player6
         #for y, x in playerhomes:
@@ -46,76 +52,76 @@ class GameBoard:
         # Left up
         x = piece[0] - 1
         y = piece[1] - 1
-        if(x >= 0 & y >= 0 & self._board[x,y] == 0 & recCall== False):
+        if(x >= 0 and y >= 0 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x >= 0 & y >= 0 & self._board[x,y] > 0):
+        elif(x >= 0 and y >= 0 and self._board[x,y] > 0):
             x = piece[0] - 2
             y = piece[1] - 2
-            if(x >= 0 & y >= 0 & self._board[x,y] == 0):
+            if(x >= 0 and y >= 0 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
         # Left down
         x = piece[0] - 1
         y = piece[1] + 1
-        if(x >= 0 & y <= 16 & self._board[x,y] == 0 & recCall== False):
+        if(x >= 0 and y <= 16 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x >= 0 & y <= 16 & self._board[x,y] > 0):
+        elif(x >= 0 and y <= 16 and self._board[x,y] > 0):
             x = piece[0] - 2
             y = piece[1] + 2
-            if(x >= 0 & y <= 16 & self._board[x,y] == 0):
+            if(x >= 0 and y <= 16 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
         # Left
         x = piece[0] - 2
         y = piece[1]
-        if(x >= 0 & self._board[x,y] == 0 & recCall== False):
+        if(x >= 0 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x >= 0 & self._board[x,y] > 0):
+        elif(x >= 0 and self._board[x,y] > 0):
             x = piece[0] - 4
-            if(x >= 0 & self._board[x,y] == 0):
+            if(x >= 0 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
         # Right up
         x = piece[0] + 1
         y = piece[1] - 1
-        if(x <= 24 & y >= 0 & self._board[x,y] == 0 & recCall== False):
+        if(x <= 24 and y >= 0 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x <= 24 & y >= 0 & self._board[x,y] > 0):
+        elif(x <= 24 and y >= 0 and self._board[x,y] > 0):
             x = piece[0] + 2
             y = piece[1] - 2
-            if(x <= 24 & y >= 0 & self._board[x,y] == 0):
+            if(x <= 24 and y >= 0 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
         # Right down
         x = piece[0] + 1
         y = piece[1] + 1
-        if(x <= 24 & y <= 16 & self._board[x,y] == 0 & recCall== False):
+        if(x <= 24 and y <= 16 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x <= 24 & y <= 16 & self._board[x,y] > 0):
+        elif(x <= 24 and y <= 16 and self._board[x,y] > 0):
             x = piece[0] + 2
             y = piece[1] + 2
-            if(x <= 24 & y <= 16 & self._board[x,y] == 0):
+            if(x <= 24 and y <= 16 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
         # Right
         x = piece[0] + 2
         y = piece[1]
-        if(x <= 24 & self._board[x,y] == 0 & recCall== False):
+        if(x <= 24 and self._board[x,y] == 0 and recCall== False):
             possible_moves.append([x,y])
         #Position was occupied. Check if we can jump it instead
-        elif(x <= 24 & self._board[x,y] > 0):
+        elif(x <= 24 and self._board[x,y] > 0):
             x = piece[0] + 4
-            if(x <= 24 & self._board[x,y] == 0):
+            if(x <= 24 and self._board[x,y] == 0):
                 jump_pos.append([x,y])
                 possible_moves.append([x,y])
 
@@ -126,3 +132,22 @@ class GameBoard:
                 possible_moves = possible_moves + self.get_possible_moves(jump_pos[i], recCall=True)
         
         return possible_moves
+    
+   
+   
+          
+    
+a = GameBoard(6);
+
+print(a.get_possible_moves([9,3]))
+
+print(a._board[12, 0]) #flip coordinates
+
+print(a.player1[0])
+
+print(a.goalList[0])
+
+print(a.player1[0], a.goalList[0])
+
+print(a.findCost(a.player1[0], a.goalList[0]))
+    
