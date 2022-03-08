@@ -1,0 +1,20 @@
+<ChineseCheckersLayout>:
+
+    players: players
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Number of players"
+            TextInput: 
+                id: players
+                multiline: False
+    
+        Button:
+            text: "Submit"
+            font_size: 32
+            on_press: root.press()                
