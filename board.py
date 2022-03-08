@@ -137,11 +137,17 @@ class GameBoard:
         
         return possible_moves
     
-   
+    def updateBoard(self, player, piece, move, index): #Updates the moved piece in playerlist 
+        self._board[piece[0],piece[1]] = 0
+        self._board[move[0],move[1]] = player+1
+        self.playerlist[player][index] =  [move[0],move[1]]
+        
+        
+    
+    
    
           
-    
-a = GameBoard(6);
+# a = GameBoard(6)
 
 # print(a.get_possible_moves([9,3]))
 
