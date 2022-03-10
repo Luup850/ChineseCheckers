@@ -32,6 +32,6 @@ player = AI(1)
 
 print(player.chooseMove(a, 1))
 # copy = copy.deepcopy(a._board)
-print(player.findOptimalMove(a, 1))
+#print(player.findOptimalMove(a, 1))
 
-print(player.simulateTurn(a, 1)._board)
+#print(player.simulateTurn(a, 1)._board)
