@@ -133,6 +133,7 @@ class GameBoard:
                 if(x <= 24 and self._board[x,y] == 0 and [x,y] not in possible_moves):
                     jump_pos.append([x,y])
                     possible_moves.append([x,y])
+            recCall=True
 
             
 

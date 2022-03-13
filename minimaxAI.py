@@ -151,8 +151,7 @@ class AI:
         for index,c in enumerate(cost_list):
             if(c > tmp):
                 best_move_index = index
-        print(board._board)
-        board.updateBoard(self.player_no, best_moves[best_move_index][0], best_moves[best_move_index][1], best_moves[best_move_index][3])
+        return self.player_no, best_moves[best_move_index][0], best_moves[best_move_index][1], best_moves[best_move_index][3]
 
 
 
