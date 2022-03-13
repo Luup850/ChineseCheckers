@@ -1,3 +1,4 @@
+#%%
 from board import GameBoard
 from minimaxAI import AI 
 import numpy as np
@@ -29,9 +30,11 @@ player = AI(1)
 # print(a._board)
 
 #print(a._board.shape)
-#print(a._board)
-player.chooseMove(a, 1)
-# copy = copy.deepcopy(a._board)
+print(a._board)
+player.chooseMove(a, 1, 1)
+print(a._board)
+#scopy = copy.deepcopy(a._board)
 #print(player.findOptimalMove(a, 1))
 
 #print(player.simulateTurn(a, 1)._board)
+# %%

@@ -156,7 +156,7 @@ class GameBoard:
     
    
           
-b = GameBoard(6)
+#b = GameBoard(6)
 
 # print(a.get_possible_moves([9,3]))
 

@@ -118,36 +118,50 @@ class AI:
     #     return piece, selected_move, index
     
     
-    def chooseMove(self, board, depth):
+    def chooseMove(self, board, depth, branches=3):
         moves = []
-      
+        cost_list = np.zeros((branches))
         for i,p in enumerate(board.playerlist[self.player_no]):
             
             for j in board.get_possible_moves(p):
                 moves.append((p, j,self.findCostChange(p, j, board, self.player_no),i))
                 
         moves.sort(key=lambda tup: tup[2], reverse = True)
-        best_moves = moves[0:1]
+        best_moves = moves[0:branches]
         
-        for l in best_moves:
+        for i,l in enumerate(best_moves):
             copied_board = copy.deepcopy(board)
             copied_board.updateBoard(self.player_no, l[0], l[1],l[3])
             print("L", l[0])
             #print(copied_board._board)
-            
+            improvements_other_players = 0 
             for m in range(board.number_of_players): #We assume all players play their turn in a greedy way
-                next_player = (m + self.player_no) % 6   
+                next_player = (m + self.player_no) % board.number_of_players   
                 if (next_player != self.player_no):
                     print("Player turn: ", next_player)
-                    self.simulateTurn(copied_board, next_player)
+                    start_position,end_position,c = self.findOptimalMove(copied_board, next_player)
+                    copied_board.updateBoard(next_player, start_position, end_position, c)
+                    #self.simulateTurn(copied_board, next_player)
+                    improvements_other_players = improvements_other_players + self.findCostChange(start_position, end_position, copied_board, next_player)
                     #print(copied_board._board)
-            
+            cost_list[i] = l[2] - improvements_other_players / 5
+        
+        best_move_index = 0
+        tmp = cost_list[0]
+        for index,c in enumerate(cost_list):
+            if(c > tmp):
+                best_move_index = index
+        print(board._board)
+        board.updateBoard(self.player_no, best_moves[best_move_index][0], best_moves[best_move_index][1], best_moves[best_move_index][3])
+
+
+
             
     def simulateTurn(self, board, player_no):
         a,b,c = self.findOptimalMove(board, player_no)
         print(a,b)
         board.updateBoard(player_no, a, b, c)
-        return board
+        return board, a, b
      
     
 # print('SORTED')
