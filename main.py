@@ -28,9 +28,9 @@ player = AI(1)
 
 # print(a._board)
 
-# print(a._board.shape)
-
-print(player.chooseMove(a, 1))
+#print(a._board.shape)
+#print(a._board)
+player.chooseMove(a, 1)
 # copy = copy.deepcopy(a._board)
 #print(player.findOptimalMove(a, 1))
 

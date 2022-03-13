@@ -129,18 +129,18 @@ class AI:
         moves.sort(key=lambda tup: tup[2], reverse = True)
         best_moves = moves[0:1]
         
-        for k,l in enumerate(best_moves):
+        for l in best_moves:
             copied_board = copy.deepcopy(board)
             copied_board.updateBoard(self.player_no, l[0], l[1],l[3])
-            print(l[0])
-            print(copied_board._board)
+            print("L", l[0])
+            #print(copied_board._board)
             
-            for m,n in enumerate(board.playerlist): #We assume all players play their turn in a greedy way
-                # print(m)    
-                # if m != self.player_no:
-                print(m)
-                self.simulateTurn(copied_board, m+1)
-                print(copied_board._board)
+            for m in range(board.number_of_players): #We assume all players play their turn in a greedy way
+                next_player = (m + self.player_no) % 6   
+                if (next_player != self.player_no):
+                    print("Player turn: ", next_player)
+                    self.simulateTurn(copied_board, next_player)
+                    #print(copied_board._board)
             
             
     def simulateTurn(self, board, player_no):
