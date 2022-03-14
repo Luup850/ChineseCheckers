@@ -106,7 +106,7 @@ class AI:
      
     
         
-    #I'm trying the minimax algorithm
+    # I'm trying the minimax algorithm
     # tmp = 0
     # selected_move = None
     # piece = [2]
