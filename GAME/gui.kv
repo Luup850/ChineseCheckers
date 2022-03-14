@@ -2,16 +2,88 @@
 
 
 <BoubleButton@Button>:
-    background_color: 0,0,0,0
     background_normal: ''
-    #color: .251, .878, .816, 1
-    pos_hint: {'center_x': 0.5}
-    size_hint: (None,None)
-    width: 90
-    height: 60
+    background_color: 0,0,0,0
+    color_testing: (177/255.0,179/255.0,181/255.0,1)
+    #pos_hint: {'center_x': 0.5}
+    #size_hint: (None,None)
+    #width: 90
+    #height: 60
     canvas.before:
         Color: 
-            rgba: (177/255.0,179/255.0,181/255.0,1) 
+            rgba: self.color_testing 
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<GreenButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (20/255.0,199/255.0,0/255.0,1)
+    canvas.before:
+        Color: 
+            rgba: self.color_testing  
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<YellowButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (252/255.0,233/255.0,3/255.0,1)
+    canvas.before:
+        Color: 
+            rgba: self.color_testing 
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<OrangeButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (252/255.0,144/255.0,3/255.0,1) 
+    canvas.before:
+        Color: 
+            rgba: self.color_testing 
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<RedButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (207/255.0,4/255.0,4/255.0,1)
+    canvas.before:
+        Color: 
+            rgba: self.color_testing
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<PurpleButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (159/255.0,4/255.0,207/255.0,1)
+    canvas.before:
+        Color: 
+            rgba: self.color_testing  
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [100]
+
+<BlueButton@Button>:
+    background_normal: ''
+    background_color: 0,0,0,0
+    color_testing: (0,0,1,1)
+    canvas.before:
+        Color: 
+            rgba: self.color_testing 
         RoundedRectangle:
             size: self.size
             pos: self.pos
@@ -23,7 +95,944 @@
     width: 40
     height: 60
 
+
+<CheckersTable>:
+    cols:25
+    padding: 0.1
+    spacing: 0.8
+
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    BoubleButton:
+        id: b0012
+        row: 0
+        col: 12
+        color_testing: (20/255.0,199/255.0,0/255.0,1)
+        on_press: root.press(b0012)   
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    GreenButton:
+        id: b0111
+        row: 1
+        col: 11
+        on_press: root.press(b0111)
+    Label
+    GreenButton:
+        id: b0113
+        row: 1
+        col: 13
+        on_press: root.press(b0113)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    GreenButton:
+        id: b0210
+        row: 2
+        col: 10
+        on_press: root.press(b0210)
+    Label
+    GreenButton:
+        id: b0212
+        row: 2
+        col: 12
+        on_press: root.press(b0212)
+    Label
+    GreenButton:
+        id: b0214
+        row: 2
+        col: 14
+        on_press: root.press(b0214)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    GreenButton:
+        id: b0309
+        row: 3
+        col: 9
+        on_press: root.press(b0309)
+    Label
+    GreenButton:
+        id: b0311
+        row: 3
+        col: 11
+        on_press: root.press(b0311)
+    Label
+    GreenButton:
+        id: b0313
+        row: 3
+        col: 13
+        on_press: root.press(b0313)
+    Label
+    GreenButton:
+        id: b0315
+        row: 3
+        col: 15
+        on_press: root.press(b0315)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    BlueButton:
+        id: b0400
+        row: 4
+        col: 0
+        on_press: root.press(b0400)
+    Label
+    BlueButton:
+        id: b0402
+        row: 4
+        col: 2
+        on_press: root.press(b0402)
+    Label
+    BlueButton:
+        id: b0404
+        row: 4
+        col: 4
+        on_press: root.press(b0404)
+    Label
+    BlueButton:
+        id: b0406
+        row: 4
+        col: 6
+        on_press: root.press(b0406)
+    Label
+    BoubleButton:
+        id: b0408
+        row: 4
+        col: 8
+        on_press: root.press(b0408)
+    Label
+    BoubleButton:
+        id: b0410
+        row: 4
+        col: 10
+        on_press: root.press(b0410)
+    Label
+    BoubleButton:
+        id: b0412
+        row: 4
+        col: 12
+        on_press: root.press(b0412)
+    Label
+    BoubleButton:
+        id: b0414
+        row: 4
+        col: 14
+        on_press: root.press(b0414)
+    Label
+    BoubleButton:
+        id: b0416
+        row: 4
+        col: 16
+        on_press: root.press(b0416)
+    Label
+    YellowButton:
+        id: b0418
+        row: 4
+        col: 18
+        on_press: root.press(b0418)
+    Label
+    YellowButton:
+        id: b0420
+        row: 4
+        col: 20
+        on_press: root.press(b0420)
+    Label
+    YellowButton:
+        id: b0422
+        row: 4
+        col: 22
+        on_press: root.press(b0422)
+    Label
+    YellowButton:
+        id: b0424
+        row: 4
+        col: 24
+        on_press: root.press(b0424)
+    ##########################################
+    Label
+    BlueButton:
+        id: b0501
+        row: 5
+        col: 1
+        on_press: root.press(b0501)
+    Label
+    BlueButton:
+        id: b0503
+        row: 5
+        col: 3
+        on_press: root.press(b0503)
+    Label
+    BlueButton:
+        id: b0505
+        row: 5
+        col: 5
+        on_press: root.press(b0505)
+    Label
+    BoubleButton:
+        id: b0507
+        row: 5
+        col: 7
+        on_press: root.press(b0507)
+    Label
+    BoubleButton:
+        id: b0509
+        row: 5
+        col: 9
+        on_press: root.press(b0509)
+    Label
+    BoubleButton:
+        id: b0511
+        row: 5
+        col: 11
+        on_press: root.press(b0511)
+    Label
+    BoubleButton:
+        id: b0513
+        row: 5
+        col: 13
+        on_press: root.press(b0513)
+    Label
+    BoubleButton:
+        id: b0515
+        row: 5
+        col: 15
+        on_press: root.press(b0515)
+    Label
+    BoubleButton:
+        id: b0517
+        row: 5
+        col: 17
+        on_press: root.press(b0517)
+    Label
+    YellowButton:
+        id: b0519
+        row: 5
+        col: 19
+        on_press: root.press(b0519)
+    Label
+    YellowButton:
+        id: b0521
+        row: 5
+        col: 21
+        on_press: root.press(b0521)
+    Label
+    YellowButton:
+        id: b0523
+        row: 5
+        col: 23
+        on_press: root.press(b0523)
+    Label
+    ##########################################
+    Label
+    Label
+    BlueButton:
+        id: b0602
+        row: 6
+        col: 2
+        on_press: root.press(b0602)
+    Label
+    BlueButton:
+        id: b0604
+        row: 6
+        col: 4
+        on_press: root.press(b0604)
+    Label
+    BoubleButton:
+        id: b0606
+        row: 6
+        col: 6
+        on_press: root.press(b0606)
+    Label
+    BoubleButton:
+        id: b0608
+        row: 6
+        col: 8
+        on_press: root.press(b0608)
+    Label
+    BoubleButton:
+        id: b0610
+        row: 6
+        col: 10
+        on_press: root.press(b0610)
+    Label
+    BoubleButton:
+        id: b0612
+        row: 6
+        col: 12
+        on_press: root.press(b0612)
+    Label
+    BoubleButton:
+        id: b0614
+        row: 6
+        col: 14
+        on_press: root.press(b0614)
+    Label
+    BoubleButton:
+        id: b0616
+        row: 6
+        col: 16
+        on_press: root.press(b0616)
+    Label
+    BoubleButton:
+        id: b0618
+        row: 6
+        col: 18
+        on_press: root.press(b0618)
+    Label
+    YellowButton:
+        id: b0620
+        row: 6
+        col: 20
+        on_press: root.press(b0620)
+    Label
+    YellowButton:
+        id: b0622
+        row: 6
+        col: 22
+        on_press: root.press(b0622)
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    BlueButton:
+        id: b0703
+        row: 7
+        col: 3
+        on_press: root.press(b0703)
+    Label
+    BoubleButton:
+        id: b0705
+        row: 7
+        col: 5
+        on_press: root.press(b0705)
+    Label
+    BoubleButton:
+        id: b0707
+        row: 7
+        col: 7
+        on_press: root.press(b0707)
+    Label
+    BoubleButton:
+        id: b0709
+        row: 7
+        col: 9
+        on_press: root.press(b0709)
+    Label
+    BoubleButton:
+        id: b0711
+        row: 7
+        col: 11
+        on_press: root.press(b0711)
+    Label
+    BoubleButton:
+        id: b0713
+        row: 7
+        col: 13
+        on_press: root.press(b0713)
+    Label
+    BoubleButton:
+        id: b0715
+        row: 7
+        col: 15
+        on_press: root.press(b0715)
+    Label
+    BoubleButton:
+        id: b0717
+        row: 7
+        col: 17
+        on_press: root.press(b0717)
+    Label
+    BoubleButton:
+        id: b0719
+        row: 7
+        col: 19
+        on_press: root.press(b0719)
+    Label
+    YellowButton:
+        id: b0721
+        row: 7
+        col: 21
+        on_press: root.press(b0721)
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    BoubleButton:
+        id: b0804
+        row: 8
+        col: 4
+        on_press: root.press(b0804)
+    Label
+    BoubleButton:
+        id: b0806
+        row: 8
+        col: 6
+        on_press: root.press(b0806)
+    Label
+    BoubleButton:
+        id: b0808
+        row: 8
+        col: 8
+        on_press: root.press(b0808)
+    Label
+    BoubleButton:
+        id: b0810
+        row: 8
+        col: 10
+        on_press: root.press(b0810)
+    Label
+    BoubleButton:
+        id: b0812
+        row: 8
+        col: 12
+        on_press: root.press(b0812)
+    Label
+    BoubleButton:
+        id: b0814
+        row: 8
+        col: 14
+        on_press: root.press(b0814)
+    Label
+    BoubleButton:
+        id: b0816
+        row: 8
+        col: 16
+        on_press: root.press(b0816)
+    Label
+    BoubleButton:
+        id: b0818
+        row: 8
+        col: 18
+        on_press: root.press(b0818)
+    Label
+    BoubleButton:
+        id: b0820
+        row: 8
+        col: 20
+        on_press: root.press(b0820)
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    PurpleButton:
+        id: b0903
+        row: 9
+        col: 3
+        on_press: root.press(b0903)
+    Label
+    BoubleButton:
+        id: b0905
+        row: 9
+        col: 5
+        on_press: root.press(b0905)
+    Label
+    BoubleButton:
+        id: b0907
+        row: 9
+        col: 7
+        on_press: root.press(b0907)
+    Label
+    BoubleButton:
+        id: b0909
+        row: 9
+        col: 9
+        on_press: root.press(b0909)
+    Label
+    BoubleButton:
+        id: b0911
+        row: 9
+        col: 11
+        on_press: root.press(b0911)
+    Label
+    BoubleButton:
+        id: b0913
+        row: 9
+        col: 13
+        on_press: root.press(b0913)
+    Label
+    BoubleButton:
+        id: b0915
+        row: 9
+        col: 15
+        on_press: root.press(b0915)
+    Label
+    BoubleButton:
+        id: b0917
+        row: 9
+        col: 17
+        on_press: root.press(b0917)
+    Label
+    BoubleButton:
+        id: b0919
+        row: 9
+        col: 19
+        on_press: root.press(b0919)
+    Label
+    OrangeButton:
+        id: b0921
+        row: 9
+        col: 21
+        on_press: root.press(b0921)
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    PurpleButton:
+        id: b1002
+        row: 10
+        col: 2
+        on_press: root.press(b1002)
+    Label
+    PurpleButton:
+        id: b1004
+        row: 10
+        col: 4
+        on_press: root.press(b1004)
+    Label
+    BoubleButton:
+        id: b1006
+        row: 10
+        col: 6
+        on_press: root.press(b1006)
+    Label
+    BoubleButton:
+        id: b1008
+        row: 10
+        col: 8
+        on_press: root.press(b1008)
+    Label
+    BoubleButton:
+        id: b1010
+        row: 10
+        col: 10
+        on_press: root.press(b1010)
+    Label
+    BoubleButton:
+        id: b1012
+        row: 10
+        col: 12
+        on_press: root.press(b1012)
+    Label
+    BoubleButton:
+        id: b1014
+        row: 10
+        col: 14
+        on_press: root.press(b1014)
+    Label
+    BoubleButton:
+        id: b1016
+        row: 10
+        col: 16
+        on_press: root.press(b1016)
+    Label
+    BoubleButton:
+        id: b1018
+        row: 10
+        col: 18
+        on_press: root.press(b1018)
+    Label
+    OrangeButton:
+        id: b1020
+        row: 10
+        col: 20
+        on_press: root.press(b1020)
+    Label
+    OrangeButton:
+        id: b1022
+        row: 10
+        col: 22
+        on_press: root.press(b1022)
+    Label
+    Label
+    ##########################################
+    Label
+    PurpleButton:
+        id: b1101
+        row: 11
+        col: 1
+        on_press: root.press(b1101)
+    Label
+    PurpleButton:
+        id: b1103
+        row: 11
+        col: 3
+        on_press: root.press(b1103)
+    Label
+    PurpleButton:
+        id: b1105
+        row: 11
+        col: 5
+        on_press: root.press(b1105)
+    Label
+    BoubleButton:
+        id: b1107
+        row: 11
+        col: 7
+        on_press: root.press(b1107)
+    Label
+    BoubleButton:
+        id: b1109
+        row: 11
+        col: 9
+        on_press: root.press(b1109)
+    Label
+    BoubleButton:
+        id: b1111
+        row: 11
+        col: 11
+        on_press: root.press(b1111)
+    Label
+    BoubleButton:
+        id: b1113
+        row: 11
+        col: 13
+        on_press: root.press(b1113)
+    Label
+    BoubleButton:
+        id: b1115
+        row: 11
+        col: 15
+        on_press: root.press(b1115)
+    Label
+    BoubleButton:
+        id: b1117
+        row: 11
+        col: 17
+        on_press: root.press(b1117)
+    Label
+    OrangeButton:
+        id: b1119
+        row: 11
+        col: 19
+        on_press: root.press(b1119)
+    Label
+    OrangeButton:
+        id: b1121
+        row: 11
+        col: 21
+        on_press: root.press(b1121)
+    Label
+    OrangeButton:
+        id: b1123
+        row: 11
+        col: 23
+        on_press: root.press(b1123)
+    Label
+    ##########################################
+    PurpleButton:
+        id: b1200
+        row: 12
+        col: 0
+        on_press: root.press(b1200)
+    Label
+    PurpleButton:
+        id: b1202
+        row: 12
+        col: 2
+        on_press: root.press(b1202)
+    Label
+    PurpleButton:
+        id: b1204
+        row: 12
+        col: 4
+        on_press: root.press(b1204)
+    Label
+    PurpleButton:
+        id: b1206
+        row: 12
+        col: 6
+        on_press: root.press(b1206)
+    Label
+    BoubleButton:
+        id: b1208
+        row: 12
+        col: 8
+        on_press: root.press(b1208)
+    Label
+    BoubleButton:
+        id: b1210
+        row: 12
+        col: 10
+        on_press: root.press(b1210)
+    Label
+    BoubleButton:
+        id: b1212
+        row: 12
+        col: 12
+        on_press: root.press(b1212)
+    Label
+    BoubleButton:
+        id: b1214
+        row: 12
+        col: 14
+        on_press: root.press(b1214)
+    Label
+    BoubleButton:
+        id: b1216
+        row: 12
+        col: 16
+        on_press: root.press(b1216)
+    Label
+    OrangeButton:
+        id: b1218
+        row: 12
+        col: 18
+        on_press: root.press(b1218)
+    Label
+    OrangeButton:
+        id: b1220
+        row: 12
+        col: 20
+        on_press: root.press(b1220)
+    Label
+    OrangeButton:
+        id: b1222
+        row: 12
+        col: 22
+        on_press: root.press(b1222)
+    Label
+    OrangeButton:
+        id: b1224
+        row: 12
+        col: 24
+        on_press: root.press(b1224)
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    RedButton:
+        id: b1309
+        row: 13
+        col: 9
+        on_press: root.press(b1309)
+    Label
+    RedButton:
+        id: b1311
+        row: 13
+        col: 11
+        on_press: root.press(b1311)
+    Label
+    RedButton:
+        id: b1313
+        row: 13
+        col: 13
+        on_press: root.press(b1313)
+    Label
+    RedButton:
+        id: b1315
+        row: 13
+        col: 15
+        on_press: root.press(b1315)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    RedButton:
+        id: b1410
+        row: 14
+        col: 10
+        on_press: root.press(b1410)
+    Label
+    RedButton:
+        id: b1412
+        row: 14
+        col: 12
+        on_press: root.press(b1412)
+    Label
+    RedButton:
+        id: b1414
+        row: 14
+        col: 14
+        on_press: root.press(b1414)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    RedButton:
+        id: b1511
+        row: 15
+        col: 11
+        on_press: root.press(b1511)
+    Label
+    RedButton:
+        id: b1513
+        row: 15
+        col: 13
+        on_press: root.press(b1513)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    RedButton:
+        id: b1612
+        row: 16
+        col: 12
+        on_press: root.press(b1612)
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    Label
+    ##########################################
+
+
 <ChineseCheckersLayout>:
+    orientation: 'vertical'
+    table: checkers_table
 
     GridLayout:
         cols:1
@@ -31,948 +1040,20 @@
         padding: 50
         spacing: 50
 
-        GridLayout:
-            cols:25
-            padding: 0.1
-            spacing: 0.8
-
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: b0012
-                row: 0
-                col: 12
-                background_color: (177/255.0,17/255.0,95/255.0,1) 
-                on_press: root.press(b0012)
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0111
-                row: 1
-                col: 11
-                on_press: root.press("0111")
-            Label
-            BoubleButton:
-                id: 0113
-                row: 1
-                col: 13
-                on_press: root.press("0113")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0210
-                row: 2
-                col: 10
-                on_press: root.press("0210")
-            Label
-            BoubleButton:
-                id: 0212
-                row: 2
-                col: 12
-                on_press: root.press("0212")
-            Label
-            BoubleButton:
-                id: 0214
-                row: 2
-                col: 14
-                on_press: root.press("0214")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0309
-                row: 3
-                col: 9
-                on_press: root.press("0309")
-            Label
-            BoubleButton:
-                id: 0311
-                row: 3
-                col: 11
-                on_press: root.press("0311")
-            Label
-            BoubleButton:
-                id: 0313
-                row: 3
-                col: 13
-                on_press: root.press("0313")
-            Label
-            BoubleButton:
-                id: 0315
-                row: 3
-                col: 15
-                on_press: root.press("0315")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            BoubleButton:
-                id: 0400
-                row: 4
-                col: 0
-                on_press: root.press("0400")
-            Label
-            BoubleButton:
-                id: 0402
-                row: 4
-                col: 2
-                on_press: root.press("0402")
-            Label
-            BoubleButton:
-                id: 0404
-                row: 4
-                col: 4
-                on_press: root.press("0404")
-            Label
-            BoubleButton:
-                id: 0406
-                row: 4
-                col: 6
-                on_press: root.press("0406")
-            Label
-            BoubleButton:
-                id: 0408
-                row: 4
-                col: 8
-                on_press: root.press("0408")
-            Label
-            BoubleButton:
-                id: 0410
-                row: 4
-                col: 10
-                on_press: root.press("0410")
-            Label
-            BoubleButton:
-                id: 0412
-                row: 4
-                col: 12
-                on_press: root.press("0412")
-            Label
-            BoubleButton:
-                id: 0414
-                row: 4
-                col: 14
-                on_press: root.press("0414")
-            Label
-            BoubleButton:
-                id: 0416
-                row: 4
-                col: 16
-                on_press: root.press("0416")
-            Label
-            BoubleButton:
-                id: 0418
-                row: 4
-                col: 18
-                on_press: root.press("0418")
-            Label
-            BoubleButton:
-                id: 0420
-                row: 4
-                col: 20
-                on_press: root.press("0420")
-            Label
-            BoubleButton:
-                id: 0422
-                row: 4
-                col: 22
-                on_press: root.press("0422")
-            Label
-            BoubleButton:
-                id: 0424
-                row: 4
-                col: 24
-                on_press: root.press("0424")
-            ##########################################
-            Label
-            BoubleButton:
-                id: 0501
-                row: 5
-                col: 1
-                on_press: root.press("0501")
-            Label
-            BoubleButton:
-                id: 0503
-                row: 5
-                col: 3
-                on_press: root.press("0503")
-            Label
-            BoubleButton:
-                id: 0505
-                row: 5
-                col: 5
-                on_press: root.press("0505")
-            Label
-            BoubleButton:
-                id: 0507
-                row: 5
-                col: 7
-                on_press: root.press("0507")
-            Label
-            BoubleButton:
-                id: 0509
-                row: 5
-                col: 9
-                on_press: root.press("0509")
-            Label
-            BoubleButton:
-                id: 0511
-                row: 5
-                col: 11
-                on_press: root.press("0511")
-            Label
-            BoubleButton:
-                id: 0513
-                row: 5
-                col: 13
-                on_press: root.press("0513")
-            Label
-            BoubleButton:
-                id: 0515
-                row: 5
-                col: 15
-                on_press: root.press("0515")
-            Label
-            BoubleButton:
-                id: 0517
-                row: 5
-                col: 17
-                on_press: root.press("0517")
-            Label
-            BoubleButton:
-                id: 0519
-                row: 5
-                col: 19
-                on_press: root.press("0519")
-            Label
-            BoubleButton:
-                id: 0521
-                row: 5
-                col: 21
-                on_press: root.press("0521")
-            Label
-            BoubleButton:
-                id: 0523
-                row: 5
-                col: 23
-                on_press: root.press("0523")
-            Label
-            ##########################################
-            Label
-            Label
-            BoubleButton:
-                id: 0602
-                row: 6
-                col: 2
-                on_press: root.press("0602")
-            Label
-            BoubleButton:
-                id: 0604
-                row: 6
-                col: 4
-                on_press: root.press("0604")
-            Label
-            BoubleButton:
-                id: 0606
-                row: 6
-                col: 6
-                on_press: root.press("0606")
-            Label
-            BoubleButton:
-                id: 0608
-                row: 6
-                col: 8
-                on_press: root.press("0608")
-            Label
-            BoubleButton:
-                id: 0610
-                row: 6
-                col: 10
-                on_press: root.press("0610")
-            Label
-            BoubleButton:
-                id: 0612
-                row: 6
-                col: 12
-                on_press: root.press("0612")
-            Label
-            BoubleButton:
-                id: 0614
-                row: 6
-                col: 14
-                on_press: root.press("0614")
-            Label
-            BoubleButton:
-                id: 0616
-                row: 6
-                col: 16
-                on_press: root.press("0616")
-            Label
-            BoubleButton:
-                id: 0618
-                row: 6
-                col: 18
-                on_press: root.press("0618")
-            Label
-            BoubleButton:
-                id: 0620
-                row: 6
-                col: 20
-                on_press: root.press("0620")
-            Label
-            BoubleButton:
-                id: 0622
-                row: 6
-                col: 22
-                on_press: root.press("0622")
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0703
-                row: 7
-                col: 3
-                on_press: root.press("0703")
-            Label
-            BoubleButton:
-                id: 0705
-                row: 7
-                col: 5
-                on_press: root.press("0705")
-            Label
-            BoubleButton:
-                id: 0707
-                row: 7
-                col: 7
-                on_press: root.press("0707")
-            Label
-            BoubleButton:
-                id: 0709
-                row: 7
-                col: 9
-                on_press: root.press("0709")
-            Label
-            BoubleButton:
-                id: 0711
-                row: 7
-                col: 11
-                on_press: root.press("0711")
-            Label
-            BoubleButton:
-                id: 0713
-                row: 7
-                col: 13
-                on_press: root.press("0713")
-            Label
-            BoubleButton:
-                id: 0715
-                row: 7
-                col: 15
-                on_press: root.press("0715")
-            Label
-            BoubleButton:
-                id: 0717
-                row: 7
-                col: 17
-                on_press: root.press("0717")
-            Label
-            BoubleButton:
-                id: 0719
-                row: 7
-                col: 19
-                on_press: root.press("0719")
-            Label
-            BoubleButton:
-                id: 0721
-                row: 7
-                col: 21
-                on_press: root.press("0721")
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0804
-                row: 8
-                col: 4
-                on_press: root.press("0804")
-            Label
-            BoubleButton:
-                id: 0806
-                row: 8
-                col: 6
-                on_press: root.press("0806")
-            Label
-            BoubleButton:
-                id: 0808
-                row: 8
-                col: 8
-                on_press: root.press("0808")
-            Label
-            BoubleButton:
-                id: 0810
-                row: 8
-                col: 10
-                on_press: root.press("0810")
-            Label
-            BoubleButton:
-                id: 0812
-                row: 8
-                col: 12
-                on_press: root.press("0812")
-            Label
-            BoubleButton:
-                id: 0814
-                row: 8
-                col: 14
-                on_press: root.press("0814")
-            Label
-            BoubleButton:
-                id: 0816
-                row: 8
-                col: 16
-                on_press: root.press("0816")
-            Label
-            BoubleButton:
-                id: 0818
-                row: 8
-                col: 18
-                on_press: root.press("0818")
-            Label
-            BoubleButton:
-                id: 0820
-                row: 8
-                col: 20
-                on_press: root.press("0820")
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 0903
-                row: 9
-                col: 3
-                on_press: root.press("0903")
-            Label
-            BoubleButton:
-                id: 0905
-                row: 9
-                col: 5
-                on_press: root.press("0905")
-            Label
-            BoubleButton:
-                id: 0907
-                row: 9
-                col: 7
-                on_press: root.press("0907")
-            Label
-            BoubleButton:
-                id: 0909
-                row: 9
-                col: 9
-                on_press: root.press("0909")
-            Label
-            BoubleButton:
-                id: 0911
-                row: 9
-                col: 11
-                on_press: root.press("0911")
-            Label
-            BoubleButton:
-                id: 0913
-                row: 9
-                col: 13
-                on_press: root.press("0913")
-            Label
-            BoubleButton:
-                id: 0915
-                row: 9
-                col: 15
-                on_press: root.press("0915")
-            Label
-            BoubleButton:
-                id: 0917
-                row: 9
-                col: 17
-                on_press: root.press("0917")
-            Label
-            BoubleButton:
-                id: 0919
-                row: 9
-                col: 19
-                on_press: root.press("0919")
-            Label
-            BoubleButton:
-                id: 0921
-                row: 9
-                col: 21
-                on_press: root.press("0921")
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            BoubleButton:
-                id: 1002
-                row: 10
-                col: 2
-                on_press: root.press("1002")
-            Label
-            BoubleButton:
-                id: 1004
-                row: 10
-                col: 4
-                on_press: root.press("1004")
-            Label
-            BoubleButton:
-                id: 1006
-                row: 10
-                col: 6
-                on_press: root.press("1006")
-            Label
-            BoubleButton:
-                id: 1008
-                row: 10
-                col: 8
-                on_press: root.press("1008")
-            Label
-            BoubleButton:
-                id: 1010
-                row: 10
-                col: 10
-                on_press: root.press("1010")
-            Label
-            BoubleButton:
-                id: 1012
-                row: 10
-                col: 12
-                on_press: root.press("1012")
-            Label
-            BoubleButton:
-                id: 1014
-                row: 10
-                col: 14
-                on_press: root.press("1014")
-            Label
-            BoubleButton:
-                id: 1016
-                row: 10
-                col: 16
-                on_press: root.press("1016")
-            Label
-            BoubleButton:
-                id: 1018
-                row: 10
-                col: 18
-                on_press: root.press("1018")
-            Label
-            BoubleButton:
-                id: 1020
-                row: 10
-                col: 20
-                on_press: root.press("1020")
-            Label
-            BoubleButton:
-                id: 1022
-                row: 10
-                col: 22
-                on_press: root.press("1022")
-            Label
-            Label
-            ##########################################
-            Label
-            BoubleButton:
-                id: 1101
-                row: 11
-                col: 1
-                on_press: root.press("1101")
-            Label
-            BoubleButton:
-                id: 1103
-                row: 11
-                col: 3
-                on_press: root.press("1103")
-            Label
-            BoubleButton:
-                id: 1105
-                row: 11
-                col: 5
-                on_press: root.press("1105")
-            Label
-            BoubleButton:
-                id: 1107
-                row: 11
-                col: 7
-                on_press: root.press("1107")
-            Label
-            BoubleButton:
-                id: 1109
-                row: 11
-                col: 9
-                on_press: root.press("1109")
-            Label
-            BoubleButton:
-                id: 1111
-                row: 11
-                col: 11
-                on_press: root.press("1111")
-            Label
-            BoubleButton:
-                id: 1113
-                row: 11
-                col: 13
-                on_press: root.press("1113")
-            Label
-            BoubleButton:
-                id: 1115
-                row: 11
-                col: 15
-                on_press: root.press("1115")
-            Label
-            BoubleButton:
-                id: 1117
-                row: 11
-                col: 17
-                on_press: root.press("1117")
-            Label
-            BoubleButton:
-                id: 1119
-                row: 11
-                col: 19
-                on_press: root.press("1119")
-            Label
-            BoubleButton:
-                id: 1121
-                row: 11
-                col: 21
-                on_press: root.press("1121")
-            Label
-            BoubleButton:
-                id: 1123
-                row: 11
-                col: 23
-                on_press: root.press("1123")
-            Label
-            ##########################################
-            BoubleButton:
-                id: 1200
-                row: 12
-                col: 0
-                on_press: root.press("1200")
-            Label
-            BoubleButton:
-                id: 1202
-                row: 12
-                col: 2
-                on_press: root.press("1202")
-            Label
-            BoubleButton:
-                id: 1204
-                row: 12
-                col: 4
-                on_press: root.press("1204")
-            Label
-            BoubleButton:
-                id: 1206
-                row: 12
-                col: 6
-                on_press: root.press("1206")
-            Label
-            BoubleButton:
-                id: 1208
-                row: 12
-                col: 8
-                on_press: root.press("1208")
-            Label
-            BoubleButton:
-                id: 1210
-                row: 12
-                col: 10
-                on_press: root.press("1210")
-            Label
-            BoubleButton:
-                id: 1212
-                row: 12
-                col: 12
-                on_press: root.press("1212")
-            Label
-            BoubleButton:
-                id: 1214
-                row: 12
-                col: 14
-                on_press: root.press("1214")
-            Label
-            BoubleButton:
-                id: 1216
-                row: 12
-                col: 16
-                on_press: root.press("1216")
-            Label
-            BoubleButton:
-                id: 1218
-                row: 12
-                col: 18
-                on_press: root.press("1218")
-            Label
-            BoubleButton:
-                id: 1220
-                row: 12
-                col: 20
-                on_press: root.press("1220")
-            Label
-            BoubleButton:
-                id: 1222
-                row: 12
-                col: 22
-                on_press: root.press("1222")
-            Label
-            BoubleButton:
-                id: 1224
-                row: 12
-                col: 24
-                on_press: root.press("1224")
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 1309
-                row: 13
-                col: 9
-                on_press: root.press("1309")
-            Label
-            BoubleButton:
-                id: 1311
-                row: 13
-                col: 11
-                on_press: root.press("1311")
-            Label
-            BoubleButton:
-                id: 1313
-                row: 13
-                col: 13
-                on_press: root.press("1313")
-            Label
-            BoubleButton:
-                id: 1315
-                row: 13
-                col: 15
-                on_press: root.press("1315")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 1410
-                row: 14
-                col: 10
-                on_press: root.press("1410")
-            Label
-            BoubleButton:
-                id: 1412
-                row: 14
-                col: 12
-                on_press: root.press("1412")
-            Label
-            BoubleButton:
-                id: 1414
-                row: 14
-                col: 14
-                on_press: root.press("1414")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 1511
-                row: 15
-                col: 11
-                on_press: root.press("1511")
-            Label
-            BoubleButton:
-                id: 1513
-                row: 15
-                col: 13
-                on_press: root.press("1513")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            BoubleButton:
-                id: 1612
-                row: 16
-                col: 12
-                on_press: root.press("1612")
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            Label
-            ##########################################
-
+        CheckersTable:
+            id: checkers_table
+            
     
         Button:
-            text: "QUIT GAME"
+            text: "RESET GAME"
             pos_hint: {'center_x': 1}
-            #font_size: 32
+            font_size: 32
             size_hint: (1,.1)
             width: 80
             height: 100
-            #on_press: root.press()
+            bold: True
+            on_press: root.reset()
             #background_normal: ''
             #background_color: (252/255.0,203/255.0,96/255.0,1)  
+
                           
