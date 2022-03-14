@@ -1,0 +1,25 @@
+#:import utils kivy.utils
+<ChineseCheckersLayout>:
+
+    players: players
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        GridLayout:
+            cols:2
+
+            Label:
+                text: "Number of players"
+            TextInput: 
+                id: players
+                multiline: False
+                background_color: (252/255.0,203/255.0,96/255.0,1)
+    
+        Button:
+            text: "Submit"
+            font_size: 32
+            on_press: root.press()
+            background_normal: ''
+            background_color: (252/255.0,203/255.0,96/255.0,1)  
+                          
