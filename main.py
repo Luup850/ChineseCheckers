@@ -3,6 +3,7 @@ from board import GameBoard
 from minimaxAI import AI 
 import numpy as np
 import copy
+
 #TO DO
 
 #IMPLEMENT THE MINIMAX USING ALL PLAYERS POSSIBLE MOVES. USE GREEDY FOR OTHER PLAYERS(EXISTING ALGORITHM)
@@ -14,6 +15,12 @@ a = GameBoard(6)
 player = AI(1)
  
 
+def checkmovement(movefrom,moveto):
+    print("MOVEFROM:", movefrom)
+
+    AImovefrom = "b0501"
+    AImoveto = "b0511"
+    return AImovefrom, AImoveto
 
 # print(a._board[20,4])
 # print(a._board[18,6])
