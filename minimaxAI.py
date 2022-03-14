@@ -128,10 +128,11 @@ class AI:
                 
         moves.sort(key=lambda tup: tup[2], reverse = True)
         best_moves = moves[0:branches]
-        
+        copied_board = copy.deepcopy(board._board)
         for i,l in enumerate(best_moves):
-            copied_board = copy.deepcopy(board)
-            copied_board.updateBoard(self.player_no, l[0], l[1],l[3])
+            board._board = copied_board
+            copied_board = copy.deepcopy(board._board)
+            board.updateBoard(self.player_no, l[0], l[1],l[3])
             print("L", l[0])
             #print(copied_board._board)
             improvements_other_players = 0 
@@ -139,13 +140,14 @@ class AI:
                 next_player = (m + self.player_no) % board.number_of_players   
                 if (next_player != self.player_no):
                     print("Player turn: ", next_player)
-                    start_position,end_position,c = self.findOptimalMove(copied_board, next_player)
-                    copied_board.updateBoard(next_player, start_position, end_position, c)
+                    start_position,end_position,c = self.findOptimalMove(board, next_player)
+                    board.updateBoard(next_player, start_position, end_position, c)
                     #self.simulateTurn(copied_board, next_player)
-                    improvements_other_players = improvements_other_players + self.findCostChange(start_position, end_position, copied_board, next_player)
+                    improvements_other_players = improvements_other_players + self.findCostChange(start_position, end_position, board, next_player)
                     #print(copied_board._board)
-            cost_list[i] = l[2] - improvements_other_players / 5
+            cost_list[i] = l[2] - improvements_other_players / (board.number_of_players - 1)
         
+        board._board = copied_board
         best_move_index = 0
         tmp = cost_list[0]
         for index,c in enumerate(cost_list):

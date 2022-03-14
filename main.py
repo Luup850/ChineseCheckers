@@ -38,7 +38,7 @@ def checkmovement(movefrom,moveto):
 
 #print(a._board.shape)
 print(a._board)
-move = player.chooseMove(copy.deepcopy(a), 1, 1)
+move = player.chooseMove(a, 1, 1)
 #a.updateBoard(1, [10, 2], [12,8], 3)
 print(move[0], move[1], move[2], move[3])
 a.updateBoard(move[0], move[1], move[2], move[3])
