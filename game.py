@@ -2,6 +2,8 @@ import kivy
 import os
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.lang import Builder
@@ -49,6 +51,10 @@ class CheckersTable(GridLayout):
         print("------Player moves-------",position.name)
         position.color_testing = self.previous_color
         self.selected.color_testing = (177/255.0,179/255.0,181/255.0,1)
+        # self.ids.output_label.text = f'You selected:{position.name}'
+        popup = Popup(title='Test popup',
+                    content=Label(text='Hello world'),
+                    size_hint=(None, None), size=(40, 40))
  
 
 class gameApp(App):

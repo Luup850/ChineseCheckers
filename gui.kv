@@ -98,6 +98,15 @@
     #width: 40
     #height: 60
 
+<MyPopup@Popup>
+    auto_dismiss: True
+    size_hint: 0.6, 0.2
+    pos_hint: {"x":0.2,"top":0.5}
+    title: "This is a popup"
+    Label:
+        text: "SOMETHING"
+        font_size: 24
+
 
 <CheckersTable>:
     cols:25
@@ -1167,7 +1176,6 @@
         CheckersTable:
             id: checkers_table
             
-    
         Button:
             text: "RESET GAME"
             pos_hint: {'center_x': 1}
