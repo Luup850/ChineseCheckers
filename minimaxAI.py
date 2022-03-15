@@ -104,7 +104,13 @@ class AI:
         board.updateBoard(player_no, a, b, c)
         return board, a, b
      
-
+    def isFinished(self, board, player_no):
+        sum = 0
+        for i in board.playerlist[player_no]:
+            sum += self.findCost(i, board.goalList[player_no])
+        if sum < 25: #I checked the value manually. When the goal is reached, cost = 23 approx.
+            return True
+    return False
         
 
     # I'm trying the minimax algorithm
