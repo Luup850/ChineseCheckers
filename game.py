@@ -10,6 +10,7 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.graphics import RoundedRectangle, Color
 import main as AI
+import time
 
 Builder.load_file('gui.kv')
 
@@ -42,9 +43,16 @@ class CheckersTable(GridLayout):
 
             
     def selectPosition(self, position):
-       
-        self.selected = position
-        position.color_testing = (0,0,0,1)
+        print(position.color_testing)
+        if position.color_testing != [0.6941176470588235, 0.7019607843137254, 0.7098039215686275, 1]: 
+            self.selected = position
+            position.color_testing = (0,0,0,1)
+
+        elif position.color_testing == [0.6941176470588235, 0.7019607843137254, 0.7098039215686275, 1]: 
+            popup = Popup(
+                    content=Label(text='Please remember to select a coloured piece to be moved'),
+                    size_hint=(None, None),pos_hint={"x":0.5,"top":0.5} ,size=(40, 40))
+            popup.open()
             
     def move(self,position):
         
@@ -52,9 +60,11 @@ class CheckersTable(GridLayout):
         position.color_testing = self.previous_color
         self.selected.color_testing = (177/255.0,179/255.0,181/255.0,1)
         # self.ids.output_label.text = f'You selected:{position.name}'
-        popup = Popup(title='Test popup',
-                    content=Label(text='Hello world'),
-                    size_hint=(None, None), size=(40, 40))
+        popup = Popup(
+                    content=Label(text='Now AI moves'),
+                    size_hint=(None, None),pos_hint={"x":0.5,"top":0.5} ,size=(40, 40))
+        popup.open()
+        
  
 
 class gameApp(App):
