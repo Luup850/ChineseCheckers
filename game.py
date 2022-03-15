@@ -9,19 +9,95 @@ from kivy.core.window import Window
 from kivy.graphics import RoundedRectangle, Color
 import main as AI
 
+Builder.load_file('gui.kv')
+
+class ChineseCheckersLayout(Widget):
+    pass
+    
+
+class CheckersTable(GridLayout):
+    
+    selected = ObjectProperty(None, allownone=True)
+
+    def press(self,position):
+         
+        # self.id_list = self.ids
+        
+        if self.selected == None:
+            self.movefrom = position.name
+            self.previous_color = position.color_testing
+            self.selectPosition(position)
+             
+        else:
+            self.moveto = position.name
+            self.move(position)
+            self.selected = None
+            AImovefrom,AImoveto = AI.checkmovement(self.movefrom,self.moveto)
+            print("------AI moves------",AImoveto)
+            if AImoveto != "" :
+                self.ids[AImoveto].color_testing = (20/255.0,199/255.0,0/255.0,1)
+                self.ids[AImovefrom].color_testing = (177/255.0,179/255.0,181/255.0,1)
+
+            
+    def selectPosition(self, position):
+       
+        self.selected = position
+        position.color_testing = (0,0,0,1)
+            
+    def move(self,position):
+        
+        print("------Player moves-------",position.name)
+        position.color_testing = self.previous_color
+        self.selected.color_testing = (177/255.0,179/255.0,181/255.0,1)
+ 
+
+class gameApp(App):
+    def build(self):
+        Window.clearcolor = (138/255.0,98/255.0,56/255.0,1)
+        
+        return ChineseCheckersLayout()
+     
+#if __name__ == '__main__':
+app = gameApp()
+app.run()
+
+
 # from kivy.uix.behaviors import ButtonBehavior
 # from kivy.uix.image import Image
 # from kivy.uix.button import Button
 # from kivy.properties import NumericProperty, ReferenceListProperty
 # from kivy.vector import Vector
 
-Builder.load_file('gui.kv')
-#directory = os.getcwd()
+
+# print(self.selected)
+        #print(position.name)
+#print(self.id_list)
+        #print(self.ids)
+        
+        #self.ids.b0501.text = "X"
+        #self.ids.b0501.color_testing = (177/255.0,179/255.0,181/255.0,1)
+ #print(position.text)
+            #print(self.selected.text)
+
+ #print(dir(position))
+        #print(position)
+        #position.canvas.clear()
+        
+        #print(position.color_testing)
+
+#position.background_color: rgba(177/255.0,79/255.0,96/255.0,1)
+            #position.text = "X"
+
+#validar el movimiento
+        # print(self)
+        # print(position)
+#self.ids.b0501.text = "X"
 
 
-class ChineseCheckersLayout(Widget):
-    pass
-    # table = ObjectProperty(None)
+
+
+
+# table = ObjectProperty(None)
 
     # print(f'TABLE: {table} ')
     
@@ -35,88 +111,6 @@ class ChineseCheckersLayout(Widget):
         #self.table.ids.b0111.text = 'X'
         #self.table.ids.b0113.text = 'X'
     #reset(table)
-
-
-
-class CheckersTable(GridLayout):
-    
-    selected = ObjectProperty(None, allownone=True)
-
-    def press(self,position):
-        # print(self.selected)
-        #print(position.name)
-        
-        
-        self.id_list = self.ids
-        #print(self.id_list)
-        #print(self.ids)
-        
-        #self.ids.b0501.text = "X"
-        #self.ids.b0501.color_testing = (177/255.0,179/255.0,181/255.0,1)
-        
-        if self.selected == None:
-            self.movefrom = position.name
-            self.previous_color = position.color_testing
-            self.selectPosition(position)
-            
-            #print(position.text)
-            #print(self.selected.text)
-
-        else:
-            self.moveto = position.name
-            self.move(position)
-            self.selected = None
-            AImovefrom,AImoveto = AI.checkmovement(self.movefrom,self.moveto)
-            print("AI moves:",AImoveto)
-            if AImoveto != "" :
-                #keyto = self.ids[AImoveto]
-                self.ids[AImoveto].color_testing = (20/255.0,199/255.0,0/255.0,1)
-
-            
-           
-
-    def selectPosition(self, position):
-        #print(dir(position))
-        #print(position)
-        #position.canvas.clear()
-        
-        #print(position.color_testing)
-        if position.text == "":
-            self.selected = position
-            position.color_testing = (0,0,0,1)
-            #position.background_color: rgba(177/255.0,79/255.0,96/255.0,1)
-            #position.text = "X"
-
-    def move(self,position):
-        #validar el movimiento
-        # print(self)
-        # print(position)
-        tmp = position.color_testing
-        position.color_testing = self.previous_color
-        self.selected.color_testing = tmp
-        #self.ids.b0501.text = "X"
-        
-
-    
-        
-
-    # def update(self):
-
-
-
-
-class gameApp(App):
-    def build(self):
-        Window.clearcolor = (138/255.0,98/255.0,56/255.0,1)
-        
-        return ChineseCheckersLayout()
-     
-#if __name__ == '__main__':
-app = gameApp()
-app.run()
-
-
-
 
 # class BoubleButton(ButtonBehavior, Image):
 #     def __init__(self, **kwargs):
