@@ -3,6 +3,7 @@ from board import GameBoard
 from minimaxAI import AI 
 import numpy as np
 import copy
+import time
 
 #TO DO
 
@@ -18,13 +19,13 @@ ai = AI(1)
 def checkmovement(movefrom,moveto):
     print("MOVEFROM:", movefrom[1:3])
 
-    game.updateBoard(1,[int(movefrom[1:3]), int(movefrom[3:5])], [int(moveto[1:3]), int(moveto[3:5])], 
-                        game.playerlist[1].index([int(movefrom[1:3]), int(movefrom[3:5])]))
+    game.updateBoard(3,[int(movefrom[3:5]), int(movefrom[1:3])], [int(moveto[3:5]), int(moveto[1:3])], 
+                        game.playerlist[3].index([int(movefrom[3:5]), int(movefrom[1:3])]))
     
     print(game._board)
     move = ai.chooseMove(game, 1, 1)
-    AImoveFrom = 'b{0:02d}{1:02d}'.format(move[1][0], move[1][1])
-    AImoveTo = 'b{0:02d}{1:02d}'.format(move[2][0], move[2][1])
+    AImoveFrom = 'b{0:02d}{1:02d}'.format(move[1][1], move[1][0])
+    AImoveTo = 'b{0:02d}{1:02d}'.format(move[2][1], move[2][0])
     print("To from: {0}, {1}".format(AImoveFrom, AImoveTo))
     #a.updateBoard(1, [10, 2], [12,8], 3)
     print(move[0], move[1], move[2], move[3])
