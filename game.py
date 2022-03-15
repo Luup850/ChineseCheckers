@@ -60,9 +60,9 @@ class CheckersTable(GridLayout):
         position.color_testing = self.previous_color
         self.selected.color_testing = (177/255.0,179/255.0,181/255.0,1)
         # self.ids.output_label.text = f'You selected:{position.name}'
-        popup = Popup(
+        popup = Popup(title='Nice move!!',
                     content=Label(text='Now AI moves'),
-                    size_hint=(None, None),pos_hint={"x":0.5,"top":0.5} ,size=(40, 40))
+                    size_hint=(0.2, 0.2),size=(400, 400))
         popup.open()
         
  

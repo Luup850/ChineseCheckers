@@ -1,5 +1,5 @@
 #:import utils kivy.utils
-
+#:import Factory kivy.factory.Factory
 
 <BoubleButton@Button>:
     background_normal: ''
@@ -97,6 +97,17 @@
     #size_hint: (None,None)
     #width: 40
     #height: 60
+
+<MyPopup@Popup>
+    auto_dismiss: True
+    size_hint: 0.6, 0.2
+    pos_hint: {"x":0.2,"top":0.5}
+    title: "Chinese Checkers Rule's"
+    Label:
+        text: "Remember, you are the RED PLAYER."
+        text: "Remember, you are the RED PLAYER."
+        font_size: 24
+
 
 <CheckersTable>:
     cols:25
@@ -1165,9 +1176,12 @@
 
         CheckersTable:
             id: checkers_table
-            
+
         Button:
-            text: "EXIT GAME"
+            text: 'GAME RULES (Please have a look to the rules before starting)'
+            on_release: Factory.MyPopup().open()
+        Button:
+            text: "RESET GAME"
             pos_hint: {'center_x': 1}
             font_size: 32
             size_hint: (1,.1)
