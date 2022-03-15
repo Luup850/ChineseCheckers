@@ -1,4 +1,3 @@
-#%%
 from board import GameBoard
 from minimaxAI import AI 
 import numpy as np
