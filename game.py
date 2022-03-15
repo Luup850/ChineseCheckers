@@ -35,11 +35,14 @@ class CheckersTable(GridLayout):
             self.moveto = position.name
             self.move(position)
             self.selected = None
-            AImovefrom,AImoveto = AI.checkmovement(self.movefrom,self.moveto)
+            AInumber, AImovefrom, AImoveto = AI.checkmovement(self.movefrom,self.moveto)
             print("------AI moves------",AImoveto)
             if AImoveto != "" :
-                self.ids[AImoveto].color_testing = (20/255.0,199/255.0,0/255.0,1)
-                self.ids[AImovefrom].color_testing = (177/255.0,179/255.0,181/255.0,1)
+                colors = [(20/255.0,199/255.0,0/255.0,1), (252/255.0,233/255.0,3/255.0,1), (252/255.0,144/255.0,3/255.0,1), (20/255.0,199/255.0,0/255.0,1), (159/255.0,4/255.0,207/255.0,1), (0,0,1,1)]
+                for i,a in enumerate(AImoveto):
+                    self.ids[a].color_testing = colors[AInumber[i]]
+                for i,a in enumerate(AImovefrom):
+                    self.ids[a].color_testing = (177/255.0,179/255.0,181/255.0,1)
 
             
     def selectPosition(self, position):
