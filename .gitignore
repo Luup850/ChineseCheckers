@@ -3,3 +3,4 @@ GAME.zip
 .DS_Store
 juego2/main.py
 juego2/main.py
+*.pyc
