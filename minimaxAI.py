@@ -69,9 +69,12 @@ class AI:
         moves.sort(key=lambda tup: tup[2], reverse = True)
         best_moves = moves[0:branches]
         copied_board = copy.deepcopy(board._board)
+        copied_playerlist = copy.deepcopy(board.playerlist)
         for i,l in enumerate(best_moves):
             board._board = copied_board
+            board.playerlist = copied_playerlist
             copied_board = copy.deepcopy(board._board)
+            copied_playerlist = copy.deepcopy(board.playerlist)
             board.updateBoard(self.player_no, l[0], l[1],l[3])
             print("L", l[0])
             #print(copied_board._board)
@@ -87,7 +90,10 @@ class AI:
                     #print(copied_board._board)
             cost_list[i] = l[2] - improvements_other_players / (board.number_of_players - 1)
         
+        # Set the board back to how it was before we did the search.
         board._board = copied_board
+        board.playerlist = copied_playerlist
+
         best_move_index = 0
         tmp = cost_list[0]
         for index,c in enumerate(cost_list):
@@ -110,7 +116,7 @@ class AI:
             sum += self.findCost(i, board.goalList[player_no])
         if sum < 25: #I checked the value manually. When the goal is reached, cost = 23 approx.
             return True
-    return False
+        return False
         
 
     # I'm trying the minimax algorithm
