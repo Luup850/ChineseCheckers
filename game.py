@@ -66,7 +66,7 @@ class CheckersTable(GridLayout):
         popup = Popup(title='Nice move!!',
                     content=Label(text='Now AI moves'),
                     size_hint=(0.2, 0.2),size=(400, 400))
-        popup.open()
+        #popup.open()
         
  
 
