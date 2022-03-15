@@ -104,8 +104,9 @@ class AI:
         board.updateBoard(player_no, a, b, c)
         return board, a, b
      
-    
+
         
+
     # I'm trying the minimax algorithm
     # tmp = 0
     # selected_move = None
