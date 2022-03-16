@@ -2,6 +2,7 @@ from re import X
 import numpy as np
 import math
 import sys
+import helper_functions as hf
 
 sys.setrecursionlimit(9999)
 
@@ -146,16 +147,41 @@ class GameBoard:
             
         return possible_moves
     
+    # Used for AI v2
+    def get_best_moves(self, player, amount):
+        stuff_to_return = []
+        # Subtract one because player one is placed at index 0.
+        for piece in self.playerlist[player-1]:
+            for move in self.get_possible_moves(piece):
+                # Calc how much closer we get to the goal (IE if we were 5 away but the new pos is 3 away, then heuristic_val is 2)
+                heuristic_val = (hf.heuristic_manhattan(piece, self.goalList[player-1]) 
+                                                - hf.heuristic_manhattan(move, self.goalList[player-1]))
+                stuff_to_return.append([piece, move, heuristic_val])
+        # Sort the list so we get the highest values at the beginning
+        stuff_to_return.sort(key=lambda tup: tup[2], reverse = True)
+        return stuff_to_return[:amount]
+        
+
+
+        
 
     def updateBoard(self, player, piece, move, index): #Updates the moved piece in playerlist 
         self._board[piece[0],piece[1]] = 0
         self._board[move[0],move[1]] = player+1
         self.playerlist[player][index] =  [move[0],move[1]]
+
+
+    # New approach to fix the index problem
+    def update_board(self, piece, move):
+        for i,p in enumerate(self.playerlist):
+            if(piece in p):
+                self.playerlist[i][p.index(piece)] = move
+                self._board[piece[0], piece[1]] = 0
+                self._board[move[0], move[1]] = i
         
         
     
-    
-   
+
           
 #b = GameBoard(6)
 
