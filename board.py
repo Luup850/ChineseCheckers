@@ -17,10 +17,19 @@ class GameBoard:
     player4 = [[9, 13], [11, 13], [13, 13], [15, 13], [10, 14], [12, 14], [14, 14], [11, 15], [13, 15], [12, 16]]
     player5 = [[3, 9], [2, 10], [4, 10], [1, 11], [3, 11], [5, 11], [0, 12], [2, 12], [4, 12], [6, 12]]
     player6 = [[0, 4], [2, 4], [4, 4], [6, 4], [1, 5], [3, 5], [5, 5], [2, 6], [4, 6], [3, 7]]
+
+    goal4 = [[12, 0], [11, 1], [13, 1], [10, 2], [12, 2], [14, 2], [9, 3], [11, 3], [13, 3], [15, 3]]
+    goal5 = [[18, 4], [20, 4], [22, 4], [24, 4], [19, 5], [21, 5], [23, 5], [20, 6], [22, 6], [21, 7]]
+    goal6 = [[21, 9], [20, 10], [22, 10], [19, 11], [21, 11], [23, 11], [18, 12], [20, 12], [22, 12], [24, 12]]
+    goal1 = [[12, 16], [9, 13], [11, 13], [13, 13], [15, 13], [10, 14], [12, 14], [14, 14], [11, 15], [13, 15]]
+    goal2 = [[3, 9], [2, 10], [4, 10], [1, 11], [3, 11], [5, 11], [0, 12], [2, 12], [4, 12], [6, 12]]
+    goal3 = [[0, 4], [2, 4], [4, 4], [6, 4], [1, 5], [3, 5], [5, 5], [2, 6], [4, 6], [3, 7]]
     
-    
+    goallist_v2 = [goal1, goal2, goal3, goal4, goal5, goal6]
     playerlist = [player1, player2, player3, player4, player5, player6]
     goalList = [[12, 16], [0, 12], [0, 4] ,[12, 0], [24, 4], [24, 12]]
+    board_name = 'Main'
+
     #Takes a tuple of 6, indicating players
     def __init__(self, players):
         #Invalid positions to move to
@@ -151,19 +160,40 @@ class GameBoard:
     def get_best_moves(self, player, amount):
         stuff_to_return = []
         # Subtract one because player one is placed at index 0.
-        for piece in self.playerlist[player-1]:
+        for piece in self.playerlist[player]:
             for move in self.get_possible_moves(piece):
                 # Calc how much closer we get to the goal (IE if we were 5 away but the new pos is 3 away, then heuristic_val is 2)
-                heuristic_val = (hf.heuristic_manhattan(piece, self.goalList[player-1]) 
-                                                - hf.heuristic_manhattan(move, self.goalList[player-1]))
+                #heuristic_val = (hf.heuristic_function(piece, self.goalList[player]) 
+                #                                - hf.heuristic_function(move, self.goalList[player]))
+                heuristic_val = (hf.dynamic_dist(piece, self.goallist_v2[player], self._board))
                 stuff_to_return.append([piece, move, heuristic_val])
         # Sort the list so we get the highest values at the beginning
         stuff_to_return.sort(key=lambda tup: tup[2], reverse = True)
         return stuff_to_return[:amount]
-        
+
+    def check_win_condition(self):
+        for i,goals in enumerate(self.goallist_v2):
+            p = i + 1
+            p_piece = 0
+            o_piece = 0
+            empty_space = True
+            for goal in goals:
+                cur_target = self._board[goal[0], goal[1]]
+                if(cur_target == p):
+                    p_piece = p_piece + 1
+                elif(cur_target != 0):
+                    o_piece = o_piece + 1
+                elif(cur_target == 0):
+                    empty_space = False
+            
+            if((p_piece - o_piece) > 0 and empty_space):
+                print(p_piece, o_piece)
+                print("WINNER: Player {0}, had majority of pieces in the goal and won!".format(p))
+                return p
+        return 0
 
 
-        
+
 
     def updateBoard(self, player, piece, move, index): #Updates the moved piece in playerlist 
         self._board[piece[0],piece[1]] = 0
@@ -175,9 +205,11 @@ class GameBoard:
     def update_board(self, piece, move):
         for i,p in enumerate(self.playerlist):
             if(piece in p):
-                self.playerlist[i][p.index(piece)] = move
+                #print("[DEBUG] {0}: {1} {2} {3}".format(self.board_name, i + 1, piece, move))
+                self.playerlist[i][p.index(piece)] = [move[0],move[1]]
                 self._board[piece[0], piece[1]] = 0
-                self._board[move[0], move[1]] = i
+                self._board[move[0], move[1]] = i + 1
+                break
         
         
     
