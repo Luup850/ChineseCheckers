@@ -15,12 +15,15 @@
 
 import copy
 class MinimaxAI_v2:
-    player_no = 0
-    current_players = []
+    #player_no = 0
+    #current_players = []
     turn_count = 0
+    #weight = 0.5
 
-    def __init__(self, player_no, current_players):
+    def __init__(self, player_no, current_players, weight=0.5):
         self.player_no = player_no-1
+        self.weight = weight
+        self.current_players = []
         print(self.player_no)
         for p in current_players:
             self.current_players.append(p)
@@ -29,7 +32,7 @@ class MinimaxAI_v2:
         self.turn_count = self.turn_count + 1
         board.board_name = 'Copy of main'
         origin = Node(None, copy.deepcopy(board._board), copy.deepcopy(board.playerlist), [], 0)
-        self.minimax(origin, 1, 3, copy.deepcopy(board))
+        self.minimax(origin, 3, 3, copy.deepcopy(board))
 
         max_val = -9999
         best_node_index = 0
@@ -38,9 +41,9 @@ class MinimaxAI_v2:
                 max_val = node.value
                 best_node = node
         #board.update_board(best_node.nodes_move[0], best_node.nodes_move[1])
-        print("Player {0}, moved {1} to {2}".format(self.player_no + 1, best_node.nodes_move[0], best_node.nodes_move[1]))
+        #print("Player {0}, moved {1} to {2}".format(self.player_no + 1, best_node.nodes_move[0], best_node.nodes_move[1]))
         #print("Nodemoves: ", node.nodes_move)
-        return copy.deepcopy(node.nodes_move)
+        return best_node.nodes_move[0], best_node.nodes_move[1]
 
     def minimax(self, node, depth, moves_to_consider, board, maximize=True):
         if(depth == 0):
@@ -66,7 +69,7 @@ class MinimaxAI_v2:
             for i,child in enumerate(node.children):
                 if(child.value > best_val):
                     best_val = child.value
-            node.value = best_val
+            node.value = (best_val * self.weight)
         
         if(maximize == False):
             # Currently only works with 1 enemy player which is why current_players[0]
@@ -89,7 +92,7 @@ class MinimaxAI_v2:
             for i,child in enumerate(node.children):
                 if(child.value < best_val):
                     best_val = child.value
-            node.value = best_val
+            node.value = (best_val * (1 - self.weight))
 
 
 class Node:

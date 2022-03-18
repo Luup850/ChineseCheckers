@@ -1,15 +1,15 @@
 from re import X
 import numpy as np
 import math
-import sys
+#import sys
 import helper_functions as hf
 
-sys.setrecursionlimit(9999)
+#sys.setrecursionlimit(9999)
 
 class GameBoard:
     _board = np.zeros((25, 17))
     _goalpos = []
-    number_of_players = 0
+    #number_of_players = 0
     # Taken from https://github.com/AndreaVidali/ChineseChekersAI/blob/master/engine_2.py which is why x and y is flipped
     player1 = [[12, 0], [11, 1], [13, 1], [10, 2], [12, 2], [14, 2], [9, 3], [11, 3], [13, 3], [15, 3]]
     player2 = [[18, 4], [20, 4], [22, 4], [24, 4], [19, 5], [21, 5], [23, 5], [20, 6], [22, 6], [21, 7]]
@@ -52,7 +52,8 @@ class GameBoard:
         #Put players on the board
         for i in range(1, 6 + 1):
             for x,y in self.playerlist[i-1]:
-                self._board[x,y] = i
+                if(i != 4):
+                    self._board[x,y] = i
                 
        
         
@@ -166,14 +167,19 @@ class GameBoard:
         stuff_to_return = []
         # Subtract one because player one is placed at index 0.
         for piece in self.playerlist[player]:
-            for move in self.get_possible_moves(piece):
+            possible_moves = self.get_possible_moves(piece)
+            possible_moves.append(piece)
+            for move in possible_moves:
+                #if((player + 1) == int(self._board[piece[0], piece[1]])):
                 # Calc how much closer we get to the goal (IE if we were 5 away but the new pos is 3 away, then heuristic_val is 2)
                 #heuristic_val = (hf.heuristic_function(piece, self.goalList[player]) 
                 #                                - hf.heuristic_function(move, self.goalList[player]))
-                heuristic_val = (hf.dynamic_dist(piece, self.goallist_v2[player], self._board))
+                heuristic_val = (hf.dynamic_dist(piece, self.goallist_v2[player], self._board) - hf.dynamic_dist(move, self.goallist_v2[player], self._board))
                 stuff_to_return.append([piece, move, heuristic_val])
+                #print("[ERROR] player moved other player for unknown reason", player +1 , self._board[piece[0], piece[1]])
         # Sort the list so we get the highest values at the beginning
         stuff_to_return.sort(key=lambda tup: tup[2], reverse = True)
+        #print(stuff_to_return)
         return stuff_to_return[:amount]
 
     def check_win_condition(self):

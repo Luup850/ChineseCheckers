@@ -1,6 +1,6 @@
 #%%
 from board import GameBoard
-from minimaxAI import AI 
+#from minimaxAI import AI 
 from minimaxAI_v2 import MinimaxAI_v2 as AI_v2
 import numpy as np
 import copy
@@ -12,7 +12,7 @@ import time
 
 #UPDATE THE GOALS TO ONE LOCATION BACKWARDS WHEN A GOAL IS REACHED
 game = GameBoard(6)
-ai1 = AI_v2(1, [4])
+#ai1 = AI_v2(1, [4])
 ai4 = AI_v2(4, [1])
 
 flipflop = True
@@ -20,28 +20,31 @@ tick = 0
 move = []
 move2 = []
 print("First board:", game._board)
-while(game.check_win_condition() == 0 and tick != 2):
-    #time.sleep(1)
+while(game.check_win_condition() == 0 and 1 != 50):
+    time.sleep(1)
     game.board_name = 'Main'
-    print("Turn:", tick)
+    #print("Turn:", tick)
     if(flipflop):
-        move1 = ai1.take_turn(copy.deepcopy(game))
+        game_copy = copy.deepcopy(game)
+        ai1 = AI_v2(1, [4])
+        move1 = ai1.take_turn(game_copy)
         print("Player 1 took turn:", move1)
-        print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
+        #print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
         game.update_board(move1[0], move1[1])
-        print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
+        #print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
         #print(game.board_name)
-        flipflop = False
+        #flipflop = False
     else:
-        move4 = ai4.take_turn(copy.deepcopy(game))
+        game_copy = copy.deepcopy(game)
+        move4 = ai4.take_turn(game_copy)
         print("Player 4 took turn:", move4)
-        print("[DEBUG]: {0}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
+        #print("[DEBUG]: {0} {1}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
         game.update_board(move4[0], move4[1])
-        print("[DEBUG]: {0}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
+        #print("[DEBUG]: {0} {1}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
         #print(game.board_name)
         flipflop = True
     
-    if(tick > 100):
+    if(tick > 20):
         tick = 0
         print(game._board)
     else:
