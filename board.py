@@ -36,7 +36,7 @@ class GameBoard:
     board_name = 'Main'
 
     #Takes a tuple of 6, indicating players
-    def __init__(self, players):
+    def __init__(self, players, temp_board=None):
         #Invalid positions to move to
         self.number_of_players = players
         border =    [[10,0], [9,1], [8,2], [7,3], [5,3], [3,3], [1,3],
@@ -46,14 +46,19 @@ class GameBoard:
                      [24,10], [23,9], [22,8], [23,7], [24,6],
                      [23,3], [21,3], [19,3], [17,3], [16,2], [15,1], [14,0]]
         #Place border on board
-        for x, y in border:
-            self._board[x,y] = -1
+        if(temp_board == None):
+            for x, y in border:
+                self._board[x,y] = -1
+        else:
+            for y in range(17):
+                for x in range(25):
+                    self._board[x, y] = temp_board._board[x, y]
 
         #Put players on the board
         for i in range(1, 6 + 1):
             for x,y in self.playerlist[i-1]:
-                if(i != 4):
-                    self._board[x,y] = i
+                #if(i != 4):
+                self._board[x,y] = i
                 
        
         
@@ -172,14 +177,15 @@ class GameBoard:
             for move in possible_moves:
                 #if((player + 1) == int(self._board[piece[0], piece[1]])):
                 # Calc how much closer we get to the goal (IE if we were 5 away but the new pos is 3 away, then heuristic_val is 2)
-                #heuristic_val = (hf.heuristic_function(piece, self.goalList[player]) 
-                #                                - hf.heuristic_function(move, self.goalList[player]))
-                heuristic_val = (hf.dynamic_dist(piece, self.goallist_v2[player], self._board) - hf.dynamic_dist(move, self.goallist_v2[player], self._board))
+                heuristic_val = (hf.heuristic_function(piece, self.goalList[player]) 
+                                                - hf.heuristic_function(move, self.goalList[player]))
+                #heuristic_val = (hf.dynamic_dist(piece, self.goallist_v2[player], self._board) - hf.dynamic_dist(move, self.goallist_v2[player], self._board))
                 stuff_to_return.append([piece, move, heuristic_val])
                 #print("[ERROR] player moved other player for unknown reason", player +1 , self._board[piece[0], piece[1]])
         # Sort the list so we get the highest values at the beginning
         stuff_to_return.sort(key=lambda tup: tup[2], reverse = True)
-        #print(stuff_to_return)
+        #print("Player: {0} - {1}".format(player, stuff_to_return))
+        #print(self._board)
         return stuff_to_return[:amount]
 
     def check_win_condition(self):

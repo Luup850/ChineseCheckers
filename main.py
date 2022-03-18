@@ -12,34 +12,43 @@ import time
 
 #UPDATE THE GOALS TO ONE LOCATION BACKWARDS WHEN A GOAL IS REACHED
 game = GameBoard(6)
-#ai1 = AI_v2(1, [4])
-ai4 = AI_v2(4, [1])
+ai1 = AI_v2(1, 4)
+ai4 = AI_v2(4, 1)
 
 flipflop = True
 tick = 0
 move = []
 move2 = []
 print("First board:", game._board)
+lel = []
 while(game.check_win_condition() == 0 and 1 != 50):
     time.sleep(1)
     game.board_name = 'Main'
     #print("Turn:", tick)
     if(flipflop):
-        game_copy = copy.deepcopy(game)
-        ai1 = AI_v2(1, [4])
-        move1 = ai1.take_turn(game_copy)
+        #time.sleep(1)
+        #game_copy = copy.deepcopy(game)
+        #ai1 = AI_v2(1, [4])
+        #game1 = GameBoard(6, game)
+        #for i in range(25):
+        #    for j in range(15):
+        #        game._board[i,j]=1000
+        move1 = ai1.take_turn(game)
         print("Player 1 took turn:", move1)
         #print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
         game.update_board(move1[0], move1[1])
+        #lel = copy.deepcopy(game._board)
         #print("[DEBUG]: {0} {1}".format(game._board[move1[0][0], move1[0][1]], game._board[move1[1][0], move1[1][1]]))
         #print(game.board_name)
-        #flipflop = False
+        flipflop = False
     else:
-        game_copy = copy.deepcopy(game)
-        move4 = ai4.take_turn(game_copy)
+        #time.sleep(1)
+        #game4 = GameBoard(6, game)
+        move4 = ai4.take_turn(game)
         print("Player 4 took turn:", move4)
         #print("[DEBUG]: {0} {1}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
         game.update_board(move4[0], move4[1])
+        #lel = copy.deepcopy(game._board)
         #print("[DEBUG]: {0} {1}".format(game._board[move4[0][0], move4[0][1]], game._board[move4[1][0], move4[1][1]]))
         #print(game.board_name)
         flipflop = True

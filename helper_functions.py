@@ -5,7 +5,7 @@ import math
 #           Useful functions                    #
 #################################################
 def heuristic_function(start, end):
-    return manhattan_distance(start, end)
+    return euclidean_distance(start, end)
 
 def manhattan_distance(start, end):
     return abs(start[0] - end[0]) + abs(start[1] - end[1])

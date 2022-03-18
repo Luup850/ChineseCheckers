@@ -14,25 +14,28 @@
 
 
 import copy
+from board import GameBoard as GB
+
 class MinimaxAI_v2:
     #player_no = 0
     #current_players = []
     turn_count = 0
     #weight = 0.5
 
-    def __init__(self, player_no, current_players, weight=0.5):
+    def __init__(self, player_no, enemy, weight=0.5):
         self.player_no = player_no-1
         self.weight = weight
-        self.current_players = []
+        self.enemy_player = enemy - 1
         print(self.player_no)
-        for p in current_players:
-            self.current_players.append(p)
+        #for p in current_players:
+        #    self.current_players.append(p)
 
     def take_turn(self, board):
         self.turn_count = self.turn_count + 1
         board.board_name = 'Copy of main'
-        origin = Node(None, copy.deepcopy(board._board), copy.deepcopy(board.playerlist), [], 0)
-        self.minimax(origin, 3, 3, copy.deepcopy(board))
+        origin = Node(None, [], 0)
+        #new_board = GB(6, board)
+        self.minimax(origin, 3, 3, board)
 
         max_val = -9999
         best_node_index = 0
@@ -47,52 +50,59 @@ class MinimaxAI_v2:
 
     def minimax(self, node, depth, moves_to_consider, board, maximize=True):
         if(depth == 0):
-            return node
+            return
 
         # Maximize
         if(maximize == True):
             best_moves = board.get_best_moves(self.player_no, moves_to_consider)
+            #cur_board = copy.deepcopy(node.board)
+            #cur_playerlist = copy.deepcopy(node.playerlist)
             for move in best_moves:
                 # Save current board so we can restore it
-                cur_board = copy.deepcopy(node.board)
-                cur_playerlist = copy.deepcopy(node.playerlist)
+                #board._board = copy.deepcopy(cur_board)
+                #board.playerlist = copy.deepcopy(cur_playerlist)
+                #board = GB(6, board)
 
                 board.update_board(move[0], move[1])
-                child_node = Node(node, copy.deepcopy(node.board), copy.deepcopy(node.playerlist), move[:2], move[2])
+                #print(board._board)
+                child_node = Node(node, move[:2], move[2])
                 node.children.append(child_node)
-                self.minimax(child_node, depth-1, moves_to_consider, copy.deepcopy(board), False)
-                board._board = copy.deepcopy(cur_board)
-                board.playerlist = copy.deepcopy(cur_playerlist)
+                self.minimax(child_node, depth-1, moves_to_consider, board, False)
+
+                board.update_board(move[1], move[0])
 
             # Now find the node with the highest gain
             best_val = node.value
             for i,child in enumerate(node.children):
                 if(child.value > best_val):
                     best_val = child.value
-            node.value = (best_val * self.weight)
+            node.value = best_val
         
         if(maximize == False):
             # Currently only works with 1 enemy player which is why current_players[0]
-            best_moves = board.get_best_moves(self.player_no, self.current_players[0])
+            best_moves = board.get_best_moves(self.enemy_player, moves_to_consider)
+            #cur_board = copy.deepcopy(node.board)
+            #cur_playerlist = copy.deepcopy(node.playerlist)
             for move in best_moves:
                 # Save current board so we can restore it
-                cur_board = copy.deepcopy(node.board)
-                cur_playerlist = copy.deepcopy(node.playerlist)
+                #board._board = copy.deepcopy(cur_board)
+                #board.playerlist = copy.deepcopy(cur_playerlist)
+                #new_board = GB(6, board)
 
                 board.update_board(move[0], move[1])
-                # The value has been flipped because it impacts the AI negatively that the player gets closer.
-                child_node = Node(node, copy.deepcopy(node.board), copy.deepcopy(node.playerlist), move[:2], -move[2])
+                #print(board._board)
+                child_node = Node(node, move[:2], move[2])
                 node.children.append(child_node)
-                self.minimax(child_node, depth-1, moves_to_consider, copy.deepcopy(board), True)
-                board._board = copy.deepcopy(cur_board)
-                board.playerlist = copy.deepcopy(cur_playerlist)
+                self.minimax(child_node, depth-1, moves_to_consider, board, True)
+
+                board.update_board(move[1], move[0])
 
             # Now find the node with the highest gain
             best_val = node.value
             for i,child in enumerate(node.children):
                 if(child.value < best_val):
                     best_val = child.value
-            node.value = (best_val * (1 - self.weight))
+            node.value = best_val
 
 
 class Node:
@@ -103,9 +113,9 @@ class Node:
     children = []
     nodes_move = []
 
-    def __init__(self, parent, board, playerlist, nodes_move, value):
+    def __init__(self, parent, nodes_move, value):
         self.parent = parent
-        self.board = copy.deepcopy(board)
-        self.playerlist = copy.deepcopy(playerlist)
+        #self.board = board
+        #self.playerlist = copy.deepcopy(playerlist)
         self.nodes_move = nodes_move
         self.value = value
