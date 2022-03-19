@@ -2,6 +2,7 @@ from re import X
 import numpy as np
 import math
 import sys
+import random
 
 sys.setrecursionlimit(9999)
 
@@ -39,7 +40,15 @@ class GameBoard:
             for x,y in self.playerlist[i-1]:
                 self._board[x,y] = i
                 
-       
+
+
+    def updateGoalList(self, player_no, player_list):
+        if self.goalList[player_no-1] in self.playerlist[player_no-1]:
+            print('found')
+            self.goalList[player_no-1] = player_list[0][random.randint(0, 9)] 
+
+           
+
         
         #playerhomes = self.player1 + self.player2 + self.player3 + self.player4 + self.player5 + self.player6
         #for y, x in playerhomes:

@@ -1,3 +1,4 @@
+from genericpath import isfile
 from board import GameBoard
 from minimaxAI import AI 
 import numpy as np
@@ -18,7 +19,7 @@ ai3 = AI(3)
 ai5 = AI(5)
 ai6 = AI(6)
  
-
+player_list = game.playerlist.copy()
 def checkmovement(movefrom,moveto):
     print("MOVEFROM:", movefrom[1:3])
     list_of_ais = [ai1, ai2, ai3, ai5, ai6]
@@ -39,6 +40,14 @@ def checkmovement(movefrom,moveto):
         #print(move[0], move[1], move[2], move[3])
         game.updateBoard(move[0], move[1], move[2], move[3])
         #print(game._board)
+
+    for i in list_of_ais:
+        if (i.isFinished(game, i.player_no)):
+            print("AI PLAYER" +str(i.player_no + "WINS"))
+            game.updateGoalList(i.player_no, player_list)
+    if(i.isFinished(game, 3)):
+        print("YOU WIN")
+    
 
     return order_of_ais ,AImoveFrom, AImoveTo
 
