@@ -51,29 +51,3 @@ def checkmovement(movefrom,moveto):
 
     return order_of_ais ,AImoveFrom, AImoveTo
 
-# print(a._board[20,4])
-# print(a._board[18,6])
-
-# # player.turn(a)
-
-# print(a._board[20,4])
-# print(a._board[18,6])
-
-# print(a._board)
-
-# a._board[0,0] =25  
-
-# print(a._board)
-
-#print(a._board.shape)
-# print(a._board)
-# move = player.chooseMove(a, 1, 1)
-# a.updateBoard(1, [10, 2], [12,8], 3)
-# print(move[0], move[1], move[2], move[3])
-# a.updateBoard(move[0], move[1], move[2], move[3])
-# print(a._board)
-#scopy = copy.deepcopy(a._board)
-#print(player.findOptimalMove(a, 1))
-
-#print(player.simulateTurn(a, 1)._board)
-# %%
