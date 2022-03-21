@@ -1,6 +1,6 @@
 from genericpath import isfile
 from board import GameBoard
-from minimaxAI import AI 
+from MaxN import AI 
 import numpy as np
 import copy
 import time
