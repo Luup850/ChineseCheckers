@@ -18,10 +18,6 @@ class AI:
     def findCostChange(self, pos1, pos2, board, player_no): #The difference between a piece location and an updated piece location
         return self.findCost(pos1, board.goalList[player_no]) - self.findCost(pos2, board.goalList[player_no])
     
-    # def findCostChangeBoard(self, initial_board, updated_board):
-    #     sum = 0
-    #     for i,p in enumerate(board.playerlist[self.player_no]):
-    #         sum += findCostChange()
     
     def findOptimalMove(self, board, player_no): #Finds the optimal move by searching for the move that will result in highest cost decrease.
         player_number = 0
@@ -119,62 +115,4 @@ class AI:
         return False
         
 
-    # I'm trying the minimax algorithm
-    # tmp = 0
-    # selected_move = None
-    # piece = [2]
-    # index = 0   
-    # counter = 0
     
-   
-    
-    # def chooseMove(self, board, depth):
-    #     change_list = np.zeros((3))
-    #     change_index_list = np.zeros((3))
-    #     for i,p in enumerate(board.playerlist[self.player_no]):
-    #         moves = board.get_possible_moves(p)
-    #         for t,j in enumerate(moves):
-    #             for k,l in enumerate(change_list):
-    #                 change = self.findCostChange(p, j, board)
-    #                 if change > l:
-    #                     change_list[k] = change
-    #                     change_index_list[k] = t
-    #                     break
-    #                     print(change)
-    #                     np.append(change_list,change)
-    #                     print(change_list)
-    #                     np.sort(change_list, axis=0)
-    #                     print(change_list)
-    #                     best_moves = [change_list[0], change_list[1], change_list[2]]
-    #                     print(best_moves)
-    #                     if change > 0 :
-    #                         copy_board = board.copy()
-    #                         tmp = change
-    #                         selected_move = j
-    #                         piece = p
-    #                         index = i 
-    #                         copy_board.updateBoard(p, j, i)
-                            
-    #                         if(depth == 0): #After all iterations are done
-                            
-    #                             # change = findCostChangeBoard(initial_board, updated_board) #Implement func
-    #                             # if change > tmp:
-    #                             #     tmp = change
-    #                             #     selected_move = j
-    #                             #     index = i
-                                
-    #                             if(j == moves.length()): #After all the moves are checked
-    #                                 return piece, selected_move, index
-                                
-    #                         for l,p in enumerate(board.playerlist): #We assume all players play their turn in a greedy way
-    #                             if (l!=self.player_no):
-    #                                 p.turnGreedy(board)
-                             
-                            
-                            
-    #                         self.chooseMove(self, copy_board, depth-1)    
-                    
-                    
-                            
-                
-    #     return piece, selected_move, index
